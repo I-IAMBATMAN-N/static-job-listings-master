@@ -4,12 +4,128 @@
   box-sizing: border-box;
 }
 body {
-  font-size: 62.5rem;
+  font-size: 50%;
   background-color: hsl(180, 52%, 96%);
+  font-family: "League Spartan";
+  color: hsl(180, 29%, 50%);
 }
 .main-header {
   height: 100px;
   width: 100%;
   background-image: url(images/bg-header-mobile.svg),
     linear-gradient(hsl(180, 29%, 50%), hsl(180, 29%, 50%));
+}
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.2rem;
+  padding-top: 3.2rem;
+}
+.heading-1 {
+  color: hsl(180, 14%, 20%);
+  font-size: 0.8rem;
+}
+.heading-2 {
+  font: 0.8rem;
+  margin-right: 2.4rem;
+}
+.header--subheadings {
+  display: flex;
+  align-items: center;
+}
+.heading-tag {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  margin-right: 0.8rem;
+  color: #ffff;
+  background-color: hsl(180, 29%, 50%);
+  padding: 0.2rem;
+  border-radius: 100px;
+}
+.heading-tag.featured {
+  background-color: black;
+}
+.listed-jobs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.listed-job {
+  width: 100%;
+  background-color: #ffff;
+  position: relative;
+  padding: 1.2rem;
+  padding-bottom: 0rem;
+  border-radius: 10px;
+  box-shadow: 0px 33px 59px -43px hsl(180, 29%, 50%);
+}
+.listed-job--img-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: red;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  transform: translate(50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 0 0 0.2rem hsl(180, 52%, 96%);
+}
+.listed-job--img {
+  width: 100%;
+}
+.listed-job--header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1.2rem 0;
+}
+.header--subheadings,
+.job-info {
+  display: flex;
+}
+
+.job-info {
+  display: flex;
+}
+.job-info--text {
+  font-size: 1rem;
+  padding: 0 0.8rem;
+  position: relative;
+  color: gray;
+}
+.job-info--text:first-child {
+  padding-left: 0;
+}
+.job-info--text:not(:first-child):before {
+  content: "";
+  display: inline-block;
+  width: 0.3rem;
+  height: 0.3rem;
+  background-color: gray;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.featured-techs {
+  border-top: 1px solid black;
+  padding: 1.2rem 0;
+}
+.featured-tech {
+  display: inline-block;
+  color: hsl(180, 29%, 50%);
+  background-color: hsl(180, 52%, 96%);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.4rem 0.6rem;
+  border-radius: 5px;
+  margin-right: 0.8rem;
+  margin-bottom: 0.8rem;
 }
