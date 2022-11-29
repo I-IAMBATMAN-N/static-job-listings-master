@@ -40,7 +40,7 @@ body {
   margin-right: 0.8rem;
   color: #ffff;
   background-color: hsl(180, 29%, 50%);
-  padding: 0.2rem;
+  padding: 0.4rem 0.6rem;
   border-radius: 100px;
 }
 .heading-tag.featured {
@@ -50,6 +50,7 @@ body {
   width: 100%;
   display: flex;
   flex-direction: column;
+  gap: 2.4rem;
 }
 .listed-job {
   width: 100%;
@@ -58,15 +59,15 @@ body {
   padding: 1.2rem;
   padding-bottom: 0rem;
   border-radius: 10px;
-  box-shadow: 0px 33px 59px -43px hsl(180, 29%, 50%);
+  box-shadow: 0px 33px 32px -37px hsl(180, 29%, 50%);
 }
 .listed-job--img-container {
   position: absolute;
   top: 0;
   left: 0;
   background-color: red;
-  width: 3rem;
-  height: 3rem;
+  width: 2.3rem;
+  height: 2.3rem;
   border-radius: 50%;
   transform: translate(50%, -50%);
   display: flex;

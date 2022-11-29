@@ -13,7 +13,7 @@ const jobs = [
     location: "USA Only",
     languages: ["HTML", "CSS", "JavaScript"],
     tools: [],
-  },š
+  },
   {
     id: 2,
     company: "Manage",
@@ -151,6 +151,40 @@ const jobs = [
   },
 ];
 
+// jobs.forEach((e) => {
+//   console.log(e.id);
+// });
+
+const listedJobs = document.querySelector(".listed-jobs");
+console.log(listedJobs);
+
+const jobHTML = function (object) {
+  return `
+  <article class="listed-job">
+    <div class="listed-job--img-container">
+      <img src="${object.logo}" alt="Hiring Company Logo" class="listed-job--img" />
+    </div>
+    <header class="listed-job--header">
+    <div class="header--subheadings">
+      <h2 class="heading-2">${object.company}</h2>
+      <h3 class="heading-tag">New!</h3>
+      <h3 class="heading-tag featured">Featured</h3>
+    </div>
+      <h1 class="heading-1">Fullstack Developer</h1>
+      <div class="job-info">
+        <p class="job-info--text">1d ago</p>
+        <p class="job-info--text">Part Time</p>
+        <p class="job-info--text">Remote</p>
+      </div>
+    </header>
+    <section class="featured-techs">
+      <span class="featured-tech">Fullstack</span>
+      <span class="featured-tech">Midweight</span>
+      <span class="featured-tech">Python</span>
+      <span class="featured-tech">React</span>
+    </section>
+  </article>`;
+};
 jobs.forEach((e) => {
-  console.log(e.id);
+  listedJobs.innerHTML += jobHTML(e);
 });
