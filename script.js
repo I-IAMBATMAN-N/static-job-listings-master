@@ -156,32 +156,47 @@ const jobs = [
 // });
 
 const listedJobs = document.querySelector(".listed-jobs");
+const featuredTechs = document.querySelector(".featured-techs");
+
 console.log(listedJobs);
 
 const jobHTML = function (object) {
+  function returnFeaturesHTML() {
+    let returnedHTML = ``;
+    object.languages.forEach((e) => {
+      returnedHTML += `<span class="featured-tech">${e}</span>`;
+    });
+    returnedHTML += `<span class="featured-tech">${object.level}</span>`;
+    object.tools.forEach((e) => {
+      returnedHTML += `<span class="featured-tech">${e}</span>`;
+    });
+    return returnedHTML;
+  }
   return `
-  <article class="listed-job">
+  <article class="listed-job active">
     <div class="listed-job--img-container">
-      <img src="${object.logo}" alt="Hiring Company Logo" class="listed-job--img" />
+      <img src="${
+        object.logo
+      }" alt="Hiring Company Logo" class="listed-job--img" />
     </div>
     <header class="listed-job--header">
     <div class="header--subheadings">
       <h2 class="heading-2">${object.company}</h2>
-      <h3 class="heading-tag">New!</h3>
-      <h3 class="heading-tag featured">Featured</h3>
+      <h3 style="${object.new ? "" : "display: none"}" class="heading-tag">${
+    object.new ? "New!" : ""
+  }</h3>
+      <h3 style="${object.new ? "" : "display: none"}"
+      class="heading-tag featured">${object.new ? "Featured" : ""}</h3>
     </div>
-      <h1 class="heading-1">Fullstack Developer</h1>
+      <h1 class="heading-1">${object.position}</h1>
       <div class="job-info">
-        <p class="job-info--text">1d ago</p>
-        <p class="job-info--text">Part Time</p>
-        <p class="job-info--text">Remote</p>
+        <p class="job-info--text">${object.postedAt}</p>
+        <p class="job-info--text">${object.contract}</p>
+        <p class="job-info--text">${object.location}</p>
       </div>
     </header>
     <section class="featured-techs">
-      <span class="featured-tech">Fullstack</span>
-      <span class="featured-tech">Midweight</span>
-      <span class="featured-tech">Python</span>
-      <span class="featured-tech">React</span>
+      ${returnFeaturesHTML()}
     </section>
   </article>`;
 };
