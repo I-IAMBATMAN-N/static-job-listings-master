@@ -10,12 +10,51 @@ body {
   background-color: hsl(180, 52%, 96%);
   font-family: "League Spartan";
   color: hsl(180, 29%, 50%);
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
 }
 .main-header {
   height: 200px;
   width: 100%;
   background-image: url(images/bg-header-mobile.svg),
     linear-gradient(hsl(180, 29%, 50%), hsl(180, 29%, 50%));
+  position: relative;
+}
+.input-container {
+  width: 80%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  background-color: #ffff;
+  border-radius: 5px;
+  padding: 1.2rem 2.4rem;
+}
+.header-input {
+  display: block;
+  border: none;
+  flex: 1;
+  font-size: 2.4rem;
+  line-height: 2;
+}
+.header-input:focus,
+.header-input:active {
+  outline: none;
+}
+.btn-clear {
+  border: none;
+  background-color: rgba(255, 255, 255, 0);
+  text-decoration: underline;
+  color: hsl(180, 29%, 50%);
+  font-weight: 700;
+}
+.btn-clear:hover,
+.btn-clear:focus {
+  cursor: pointer;
 }
 .container {
   width: 100%;
