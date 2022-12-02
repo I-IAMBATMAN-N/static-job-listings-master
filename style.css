@@ -239,6 +239,10 @@ body {
   .input-container {
     flex-direction: row;
   }
+  .keyword-container {
+    flex: 0 0 fit-content;
+    overflow-x: auto;
+  }
   .listed-job--header {
     gap: 0.6rem;
   }
