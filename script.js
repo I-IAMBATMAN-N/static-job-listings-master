@@ -1,3 +1,5 @@
+"use strict";
+
 const jobs = [
   {
     id: 1,
@@ -151,25 +153,27 @@ const jobs = [
   },
 ];
 
-// jobs.forEach((e) => {
-//   console.log(e.id);
-// });
-
 const listedJobs = document.querySelector(".listed-jobs");
 const featuredTechs = document.querySelector(".featured-techs");
+
+let keyWordArray = [];
 
 console.log(listedJobs);
 
 const jobHTML = function (object) {
+  // display job features
   function returnFeaturesHTML() {
     let returnedHTML = ``;
     object.languages.forEach((e) => {
       returnedHTML += `<span class="featured-tech">${e}</span>`;
     });
     returnedHTML += `<span class="featured-tech">${object.level}</span>`;
+    returnedHTML += `<span class="featured-tech">${object.role}</span>`;
+
     object.tools.forEach((e) => {
       returnedHTML += `<span class="featured-tech">${e}</span>`;
     });
+
     return returnedHTML;
   }
   return `
@@ -200,6 +204,3 @@ const jobHTML = function (object) {
     </section>
   </article>`;
 };
-jobs.forEach((e) => {
-  listedJobs.innerHTML += jobHTML(e);
-});
