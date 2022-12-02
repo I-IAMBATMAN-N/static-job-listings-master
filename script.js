@@ -387,3 +387,13 @@ window.addEventListener("load", function () {
   console.log("DOCUMENT LOADED");
   displayJobs();
 });
+// HEADER INPUT EVENT LISTENNER
+headerInput.addEventListener("keydown", function (e) {
+  if (e.key === " " || e.key === "Enter") {
+    keyWordArray.push(headerInput.value);
+    fillKeywords();
+    displayJobs();
+    // console.log(keyWordArray);
+    headerInput.value = "";
+  }
+});
