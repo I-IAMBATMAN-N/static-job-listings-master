@@ -259,3 +259,126 @@ function fillKeywords() {
   });
   //
 }
+
+let filteredArray = [];
+function displayJobs() {
+  filteredArray = [];
+  function checkRoleAndLevel(job) {
+    if (keyWordArray.length === 1) {
+      console.log("keyWordArray", keyWordArray);
+      if (job.role.toLowerCase() === keyWordArray[0].toLowerCase()) {
+        //
+        console.log("job.role", job.role);
+        console.log(job.role.toLowerCase() === keyWordArray[0].toLowerCase());
+        filteredArray.push(job);
+      } else if (job.level.toLowerCase() === keyWordArray[0].toLowerCase()) {
+        //
+        console.log("job.level", job.level);
+        console.log(job.level.toLowerCase() === keyWordArray[0].toLowerCase());
+        filteredArray.push(job);
+      }
+    } else if (keyWordArray.length > 1) {
+      keyWordArray.forEach((keyword) => {
+        if (job.role.toLowerCase() === keyword.toLowerCase()) {
+          filteredArray.push(job);
+        } else if (job.level.toLowerCase() === keyword.toLowerCase()) {
+          filteredArray.push(job);
+        }
+      });
+    }
+    // console.log("FILTERED ARRAY", filteredArray);
+    //display filtered array
+    let noDuplicates = [...new Set(filteredArray)];
+    // console.log("noDuplicates", noDuplicates);
+    listedJobs.innerHTML = "";
+    if (noDuplicates.length === 1) {
+      listedJobs.innerHTML += jobHTML(noDuplicates[0]);
+    } else if (noDuplicates.length > 1) {
+      noDuplicates.forEach((noDuplicate) => {
+        listedJobs.innerHTML += jobHTML(noDuplicate);
+      });
+    }
+  }
+  //
+  function checkLanguagesAndTools(array, job) {
+    if (array.length === 1) {
+      //
+      if (keyWordArray.length === 1) {
+        //
+        array.forEach((arrItem) => {
+          if (arrItem.toLowerCase() === keyWordArray[0].toLowerCase()) {
+            filteredArray.push(job);
+          }
+        });
+      } //
+      else if (keyWordArray.length > 1) {
+        //
+        filteredArray = [];
+        //
+        keyWordArray.forEach((keyword) => {
+          console.log("keyword checking");
+          if (array[0].toLowercase() === keyword.toLowercase()) {
+            filteredArray.push(job);
+          }
+        });
+      }
+    } else if (array.length > 1) {
+      //
+      array.forEach((arrItem) => {
+        // console.log("arrItem", arrItem.toLowerCase());
+        // console.log("array checking");
+        // //
+        if (keyWordArray.length === 1) {
+          console.log("LEEEEEEEEEEEEEEEEEEEEEEEEENGTH 1");
+          if (keyWordArray[0].toLowerCase() === arrItem.toLowerCase()) {
+            console.log(true);
+            filteredArray.push(job);
+          }
+        }
+        // else if (keyWordArray.length > 1) {
+        //   keyWordArray.forEach((keyword) => {
+        //     // console.log("keyword checking");
+        //     if (arrItem.toLowercase() === keyword.toLowercase()) {
+        //       filteredArray.push(job);
+        //     }
+        //     // console.log("arrItem", arrItem.toLowerCase());
+        //   });
+        // }
+      });
+    }
+    let noDuplicates = [...new Set(filteredArray)];
+    // console.log("noDuplicates", noDuplicates);
+    listedJobs.innerHTML = "";
+    if (noDuplicates.length === 1) {
+      listedJobs.innerHTML += jobHTML(noDuplicates[0]);
+    } else if (noDuplicates.length > 1) {
+      noDuplicates.forEach((noDuplicate) => {
+        listedJobs.innerHTML += jobHTML(noDuplicate);
+      });
+    }
+  }
+  //
+  //
+  if (keyWordArray.length > 0) {
+    console.log("keywordarray", keyWordArray[0]);
+  }
+  listedJobs.innerHTML = "";
+  jobs.forEach((job) => {
+    console.log(job.role);
+    //
+    //initial Job Load
+    if (keyWordArray.length === 0) {
+      listedJobs.innerHTML += jobHTML(job);
+    }
+    //
+    else if (keyWordArray.length > 0) {
+      // console.log("[...job.tools, ...job.languages]", [
+      //   ...job.tools,
+      //   ...job.languages,
+      // ]);
+      checkRoleAndLevel(job);
+      checkLanguagesAndTools([...job.languages, ...job.tools], job);
+    }
+  });
+}
+// ************************************************************************
