@@ -41,6 +41,7 @@ body {
   display: flex;
   align-items: center;
   gap: 1.2rem;
+  overflow-x: scroll;
 }
 .keyword-container .featured-tech {
   margin: 0;
