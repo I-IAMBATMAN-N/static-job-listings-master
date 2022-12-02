@@ -382,3 +382,8 @@ function displayJobs() {
   });
 }
 // ************************************************************************
+// SHOW ALL JOBS AFTER WINDOW IS LOADED
+window.addEventListener("load", function () {
+  console.log("DOCUMENT LOADED");
+  displayJobs();
+});
