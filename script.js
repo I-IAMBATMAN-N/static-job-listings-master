@@ -204,3 +204,58 @@ const jobHTML = function (object) {
     </section>
   </article>`;
 };
+
+const headerInputContainer = document.querySelector(".input-container");
+const keywordContainer = document.querySelector(".keyword-container");
+const headerInput = document.querySelector(".header-input");
+const btnClear = document.querySelector(".btn-clear");
+
+function fillKeywords() {
+  keywordContainer.innerHTML = "";
+  keyWordArray.forEach((e) => {
+    if (e.length > 0) {
+      keywordContainer.innerHTML += `<span class="keyword-span"><span class="featured-tech">${e}</span><span class="clear-cross">X</span></span>`;
+      // *************************************************************************************
+      // FUNCTION
+      // - delete keyword tag on delete-button click
+      // *************************************************************************************
+    }
+  });
+  const crossButtons = document.querySelectorAll(".clear-cross");
+  crossButtons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      if (keyWordArray.length > 1) {
+        let arr1 = keyWordArray.slice(
+          0,
+          keyWordArray.indexOf(
+            e.target.closest(".keyword-span").children[0].innerText
+          )
+        );
+        //
+        let arr2 = keyWordArray.slice(
+          keyWordArray.indexOf(
+            e.target.closest(".keyword-span").children[0].innerText
+          ) + 1,
+          keyWordArray.length
+        );
+        //
+        keyWordArray = [];
+        //
+        arr1.forEach((e) => {
+          keyWordArray.push(e);
+        });
+        arr2.forEach((e) => {
+          keyWordArray.push(e);
+        });
+        console.log("keyWordArray", keyWordArray);
+        fillKeywords();
+        displayJobs();
+      } else if (keyWordArray.length === 1) {
+        keyWordArray = [];
+        fillKeywords();
+        displayJobs();
+      }
+    });
+  });
+  //
+}
