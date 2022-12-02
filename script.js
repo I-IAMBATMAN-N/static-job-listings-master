@@ -397,3 +397,10 @@ headerInput.addEventListener("keydown", function (e) {
     headerInput.value = "";
   }
 });
+// HEADER INPUT CLEAR BUTTON EVENT LISTENNER
+btnClear.addEventListener("click", (e) => {
+  console.log(e.target);
+  keyWordArray = [];
+  keywordContainer.innerHTML = "";
+  displayJobs();
+});
