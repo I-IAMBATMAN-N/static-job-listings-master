@@ -1,6 +1,6 @@
 "use strict";
 
-const jobs = [
+const initialJobs = [
   {
     id: 1,
     company: "Photosnap",
@@ -153,6 +153,8 @@ const jobs = [
   },
 ];
 
+let jobs = initialJobs.map((job) => ({ ...job, active: false }));
+
 const listedJobs = document.querySelector(".listed-jobs");
 const featuredTechs = document.querySelector(".featured-techs");
 
@@ -177,7 +179,7 @@ const jobHTML = function (object) {
     return returnedHTML;
   }
   return `
-  <article class="listed-job active">
+  <article class="listed-job ${object.active ? "active" : ""}">
     <div class="listed-job--img-container">
       <img src="${
         object.logo
@@ -266,24 +268,42 @@ function displayJobs() {
   function checkRoleAndLevel(job) {
     if (keyWordArray.length === 1) {
       console.log("keyWordArray", keyWordArray);
-      if (job.role.toLowerCase() === keyWordArray[0].toLowerCase()) {
-        //
-        console.log("job.role", job.role);
-        console.log(job.role.toLowerCase() === keyWordArray[0].toLowerCase());
-        filteredArray.push(job);
-      } else if (job.level.toLowerCase() === keyWordArray[0].toLowerCase()) {
-        //
-        console.log("job.level", job.level);
-        console.log(job.level.toLowerCase() === keyWordArray[0].toLowerCase());
-        filteredArray.push(job);
-      }
+      // if (job.role.toLowerCase() === keyWordArray[0].toLowerCase()) {
+      //   //
+      //   // console.log("job.role", job.role);
+      //   // console.log(job.role.toLowerCase() === keyWordArray[0].toLowerCase());
+      //   filteredArray.push(job);
+      // } else if (job.level.toLowerCase() === keyWordArray[0].toLowerCase()) {
+      //   //
+      //   // console.log("job.level", job.level);
+      //   // console.log(job.level.toLowerCase() === keyWordArray[0].toLowerCase());
+      //   filteredArray.push(job);
+      // }
+      filteredArray = jobs.filter(
+        (job) =>
+          job.position.toLowerCase().search(keyWordArray[0].toLowerCase()) !=
+            -1 ||
+          job.location.toLowerCase().search(keyWordArray[0].toLowerCase()) !=
+            -1 ||
+          job.languages
+            .join("")
+            .toLowerCase()
+            .search(keyWordArray[0].toLowerCase()) != -1 ||
+          job?.tools
+            .join("")
+            .toLowerCase()
+            .search(keyWordArray[0].toLowerCase()) != -1
+      );
     } else if (keyWordArray.length > 1) {
-      keyWordArray.forEach((keyword) => {
-        if (job.role.toLowerCase() === keyword.toLowerCase()) {
-          filteredArray.push(job);
-        } else if (job.level.toLowerCase() === keyword.toLowerCase()) {
-          filteredArray.push(job);
-        }
+      keyWordArray.forEach((word) => {
+        filteredArray = jobs.filter(
+          (job) =>
+            job.position.toLowerCase().search(word.toLowerCase()) != -1 ||
+            job.location.toLowerCase().search(word.toLowerCase()) != -1 ||
+            job.languages.join("").toLowerCase().search(word.toLowerCase()) !=
+              -1 ||
+            job?.tools.join("").toLowerCase().search(word.toLowerCase()) != -1
+        );
       });
     }
     // console.log("FILTERED ARRAY", filteredArray);
@@ -329,7 +349,6 @@ function displayJobs() {
         // console.log("array checking");
         // //
         if (keyWordArray.length === 1) {
-          console.log("LEEEEEEEEEEEEEEEEEEEEEEEEENGTH 1");
           if (keyWordArray[0].toLowerCase() === arrItem.toLowerCase()) {
             console.log(true);
             filteredArray.push(job);
@@ -364,7 +383,7 @@ function displayJobs() {
   }
   listedJobs.innerHTML = "";
   jobs.forEach((job) => {
-    console.log(job.role);
+    // console.log(job.role);
     //
     //initial Job Load
     if (keyWordArray.length === 0) {
@@ -386,6 +405,29 @@ function displayJobs() {
 window.addEventListener("load", function () {
   console.log("DOCUMENT LOADED");
   displayJobs();
+  const jobItems = document.querySelectorAll(".listed-job");
+
+  jobItems.forEach((item) => {
+    item.addEventListener("click", function (e) {
+      e.target.closest(".listed-job").classList.toggle("active");
+      const company = e.target
+        .closest(".listed-job")
+        .querySelector(".heading-2").innerText;
+      // console.log(company);
+      //
+      jobs = jobs.map((job) =>
+        job.company === company
+          ? { ...job, active: job.active === false ? true : false }
+          : { ...job }
+      );
+      console.log(
+        "changed jobs",
+        jobs.map((job) => job.active)
+      );
+      // displayJobs();
+    });
+    // displayJobs();
+  });
 });
 // HEADER INPUT EVENT LISTENNER
 headerInput.addEventListener("keydown", function (e) {
