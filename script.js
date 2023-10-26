@@ -325,9 +325,19 @@ window.addEventListener("load", function () {
     // displayJobs();
   });
 });
-// HEADER INPUT EVENT LISTENNER
+
+// FORM EVENT LISTENER
+headerInputContainer.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  keyWordArray.push(headerInput.value);
+  fillKeywords();
+  displayJobs();
+  headerInput.value = "";
+});
+// HEADER INPUT EVENT LISTENER
 headerInput.addEventListener("keydown", function (e) {
-  if (e.key === " " || e.key === "Enter") {
+  if (e.key === " ") {
     keyWordArray.push(headerInput.value);
     fillKeywords();
     displayJobs();
@@ -335,7 +345,7 @@ headerInput.addEventListener("keydown", function (e) {
     headerInput.value = "";
   }
 });
-// HEADER INPUT CLEAR BUTTON EVENT LISTENNER
+// HEADER INPUT CLEAR BUTTON EVENT LISTENER
 btnClear.addEventListener("click", (e) => {
   console.log(e.target);
   keyWordArray = [];

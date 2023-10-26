@@ -83,14 +83,18 @@ body {
 .header-input:active {
   outline: none;
 }
-.header-input::placeholder {
-}
 .btn-clear {
+  font-size: 1.6rem;
+  font-weight: 700;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   border: none;
   background-color: rgba(255, 255, 255, 0);
   text-decoration: underline;
   color: hsl(180, 29%, 50%);
-  font-weight: 700;
 }
 .btn-clear:hover,
 .btn-clear:focus {
