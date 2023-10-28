@@ -160,7 +160,7 @@ const featuredTechs = document.querySelector(".featured-techs");
 
 let keyWordArray = [];
 
-console.log(listedJobs);
+// console.log(listedJobs);
 
 const jobHTML = function (object) {
   // display job features
@@ -249,7 +249,7 @@ function fillKeywords() {
         arr2.forEach((e) => {
           keyWordArray.push(e);
         });
-        console.log("keyWordArray", keyWordArray);
+        // console.log("keyWordArray", keyWordArray);
         fillKeywords();
         displayJobs();
       } else if (keyWordArray.length === 1) {
@@ -281,14 +281,14 @@ function displayJobs() {
     });
 
     //
-    console.log("filterJobs JOBS", derJobs);
+    // console.log("filterJobs JOBS", derJobs);
 
     return derJobs;
   }
 
   //
   if (keyWordArray.length > 0) {
-    console.log("keywordarray", keyWordArray[0]);
+    // console.log("keywordarray", keyWordArray[0]);
   }
 
   listedJobs.innerHTML = "";
@@ -299,7 +299,7 @@ function displayJobs() {
 // ************************************************************************
 // SHOW ALL JOBS AFTER WINDOW IS LOADED
 window.addEventListener("load", function () {
-  console.log("DOCUMENT LOADED");
+  // console.log("DOCUMENT LOADED");
   displayJobs();
   const jobItems = document.querySelectorAll(".listed-job");
 
@@ -316,7 +316,7 @@ window.addEventListener("load", function () {
           ? { ...job, active: job.active === false ? true : false }
           : { ...job }
       );
-      console.log(
+      // console.log(
         "changed jobs",
         jobs.map((job) => job.active)
       );
@@ -347,7 +347,7 @@ headerInput.addEventListener("keydown", function (e) {
 });
 // HEADER INPUT CLEAR BUTTON EVENT LISTENER
 btnClear.addEventListener("click", (e) => {
-  console.log(e.target);
+  // console.log(e.target);
   keyWordArray = [];
   keywordContainer.innerHTML = "";
   displayJobs();
