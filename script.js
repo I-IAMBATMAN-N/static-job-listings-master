@@ -317,9 +317,9 @@ window.addEventListener("load", function () {
           : { ...job }
       );
       // console.log(
-        "changed jobs",
-        jobs.map((job) => job.active)
-      );
+      //   "changed jobs",
+      //   jobs.map((job) => job.active)
+      // );
       // displayJobs();
     });
     // displayJobs();
